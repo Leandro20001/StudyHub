@@ -1,0 +1,9 @@
+node_modules
+.expo
+.git
+AppData
+AppData/*
+*.log
+*.tmp
+Cache
+LocalState*/

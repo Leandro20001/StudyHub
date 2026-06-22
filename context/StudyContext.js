@@ -4,20 +4,38 @@ export const StudyContext = createContext();
 
 export function StudyProvider({ children }) {
   const [materias, setMaterias] = useState([]);
+  const [prioridadeMateria, setPrioridadeMateira] = useState();
   const [tarefas, setTarefas] = useState([]);
+  const [usuario, setUsuario] = useState(null);
 
-  function adicionarMateria(nome) {
-    setMaterias([
-      ...materias,
-      { id: Date.now().toString(), nome },
-    ]);
-  }
+function login(nome, email, senha) {
+  setUsuario({
+    nome,
+    email,
+    senha,
+  });
+}
 
-  function adicionarTarefa(texto, prazo) {
+function logout() {
+  setUsuario(null);
+}
+
+function adicionarMateria(nome, prioridadeMateria) {
+  const novaMateria = {
+    id: Date.now().toString(),
+    nome,
+    prioridadeMateria, // 👈 ESSENCIAL
+  };
+
+  setMaterias((prev) => [...prev, novaMateria]);
+}
+
+  function adicionarTarefa(texto, prazo, prioridade) {
     setTarefas([
       ...tarefas,
       {
         id: Date.now().toString(),
+        prioridade,
         texto,
         prazo,
         concluida: false,
@@ -44,10 +62,14 @@ export function StudyProvider({ children }) {
       value={{
         materias,
         tarefas,
+        prioridadeMateria,
         adicionarMateria,
         adicionarTarefa,
         concluirTarefa,
         removerTarefa,
+        login,
+        logout,
+        usuario
       }}
     >
       {children}

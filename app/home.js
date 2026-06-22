@@ -6,6 +6,7 @@ import { StudyContext } from "../context/StudyContext";
 
 export default function Home() {
   const { materias, tarefas } = useContext(StudyContext);
+  const { usuario } = useContext(StudyContext);
 
   const concluidas = tarefas.filter(
     (t) => t.concluida
@@ -35,7 +36,7 @@ export default function Home() {
             fontSize: 16,
           }}
         >
-          Bem-vindo 👋
+          Bem-vindo👋
         </Text>
 
         <Text
