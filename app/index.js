@@ -24,7 +24,7 @@ export default function AuthScreen() {
       signUp(email, password);
     }
 
-    router.replace("/home"); // 🔥 entra no app
+    router.replace("/home");
   }
 
   return (

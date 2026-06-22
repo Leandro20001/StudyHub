@@ -24,7 +24,7 @@ function adicionarMateria(nome, prioridadeMateria) {
   const novaMateria = {
     id: Date.now().toString(),
     nome,
-    prioridadeMateria, // 👈 ESSENCIAL
+    prioridadeMateria, 
   };
 
   setMaterias((prev) => [...prev, novaMateria]);
